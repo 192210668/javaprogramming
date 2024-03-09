@@ -1,0 +1,23 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class AttendanceSystem {
+    private Map<String, Boolean> attendance = new HashMap<>();
+
+    public void markAttendance(String studentName, boolean isPresent) {
+        attendance.put(studentName, isPresent);
+    }
+
+    public boolean getAttendance(String studentName) {
+        return attendance.getOrDefault(studentName, false);
+    }
+
+    public static void main(String[] args) {
+        AttendanceSystem system = new AttendanceSystem();
+        system.markAttendance("Alice", true);
+        system.markAttendance("Bob", false);
+
+        System.out.println("Alice's attendance: " + (system.getAttendance("Alice") ? "Present" : "Absent"));
+        System.out.println("Bob's attendance: " + (system.getAttendance("Bob") ? "Present" : "Absent"));
+    }
+}
